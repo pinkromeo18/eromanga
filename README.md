@@ -1,0 +1,2 @@
+# eromanga
+eromanga.js
