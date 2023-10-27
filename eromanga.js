@@ -58,6 +58,11 @@ function eromanga(){
   max-height:400px;  
 }
 .eromanga h1{font-size:1.9rem;}
+
+.eromanga p, .eromanga h1 {
+    margin: 1rem 0;
+    line-height: 1.15;
+}
     `
     return `<style>${css}</style>\n`
   }
