@@ -1,0 +1,43 @@
+<body>
+<style>
+@import url(https://pinkromeo18.github.io/goz/goz.css);  
+</style>
+  <script type="module">
+import "https://pinkromeo18.github.io/use/use.js"
+
+var listview=async()=>{
+
+var url='https://pinkromeo18.github.io/eromanga/takayuka/view.html'
+url=location.href
+url=url.replace('https://','').replace('.github.io','')
+var ary = url.split('/')
+var owner =ary.at(0)
+var repo = ary.at(1)
+var path = ary.at(2)
+console.log(owner,repo,path)
+  
+  var url=`https://api.github.com/repos/${owner}/${repo}/contents/${path}?per_page=100`;
+ 
+  var list=fn.ce('div')
+  list.id='list'
+  fn.a2(list,document.body)
+  
+  list.style.display='flex';
+  list.style.flexWrap='wrap';
+  var d =await fetch(url).then(d=>d.json())
+  
+  d.map(d=>{
+    var el = fn.ce('img');
+    el.src = d.download_url
+    el.alt = d.name
+    el.dataset.name=d.name
+    el.height =100;
+    ;
+    fn.a2(el,list);  
+    el.onclick = ()=> fn.copy(el.src);
+  });  
+}
+
+listview();
+  </script>  
+</body>
